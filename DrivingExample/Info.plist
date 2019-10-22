@@ -20,6 +20,18 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App needs always authorization for automatic trip detection.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>App needs always authorization for automatic trip detection.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App needs your location for location tracking.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>App needs access to gyroscope and accelerometer for trip event detection.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -31,8 +43,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
