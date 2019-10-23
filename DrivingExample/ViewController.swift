@@ -59,8 +59,8 @@ class ViewController: UIViewController {
             return
         }
 
-        let startDate = Date()
-        let endDate = Date(timeIntervalSince1970: (Date().timeIntervalSince1970 - 30*24*3600))
+        let endDate = Date()
+        let startDate = Date(timeIntervalSince1970: (Date().timeIntervalSince1970 - 30*24*3600))
         SygicDriving.sharedInstance().serverApi.userTrips(withStart: startDate, end: endDate, page: 1, pageSize: 10) { (data : SygicUserTripsContainerModel?, error : Error?) in
             guard let data = data, error == nil else {
                 self.writeText(text: "Error:\(String(describing: error))")
@@ -146,8 +146,8 @@ class ViewController: UIViewController {
                 }
 
                 // s.tripsCount
-                let totalScoreMeStr = String(format: ".0f", s.totalScore.scoreOfMe)
-                let totalScoreOthersStr = String(format: ".0f", s.totalScore.scoreOfOthersOverall)
+                let totalScoreMeStr = String(format: "%.0f", s.totalScore.scoreOfMe)
+                let totalScoreOthersStr = String(format: "%.0f", s.totalScore.scoreOfOthersOverall)
                 let finalStr = "Number of trips:\(s.tripsCount)\nMy score:\(totalScoreMeStr)\nOthers:\(totalScoreOthersStr)\n"
                 self.writeText(text: finalStr)
             }
