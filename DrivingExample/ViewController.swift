@@ -74,7 +74,7 @@ class ViewController: UIViewController {
             self.lastTripId = data.trips.first?.externalId
 
             if data.trips.count == 0 {
-                self.writeText(text: "There are no trips. Go take a drive.")
+                self.writeText(text: "There are no trips. Go take a drive.\n")
                 return
             }
 

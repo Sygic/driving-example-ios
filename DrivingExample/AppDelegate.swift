@@ -11,7 +11,7 @@ import UserNotifications
 import os.log
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SygicDrivingDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SygicDrivingDelegate, SygicPositioningDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -117,6 +117,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SygicDrivingDelegate, UNU
         print("trip ended")
     }
 
+    //if you want to have location in start and end trip events use this delegate
+    //Note: at the time when trip starts we may not have location, for example in tunnel
+    func driving(_ driving: SygicDriving, tripDidStart timestamp: Double, location: CLLocation?) {
+        print("trip start with location:\(String(describing: location))")
+    }
+
+    func driving(_ driving: SygicDriving, tripDidEnd timestamp: Double, location: CLLocation?) {
+        print("trip end with location:\(String(describing: location))")
+    }
+
     func driving(_ driving: SygicDriving, reporting event: SygicTripEvent) {
         print("reporting event with type: \(event.eventType.rawValue)")
     }
@@ -165,6 +175,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SygicDrivingDelegate, UNU
 
     func driving(_ driving: SygicDriving, finalTripData trip: SygicDrivingTrip) {
         print("here are trip data")
+    }
+
+    // MARK: - Positionion
+    //During the trip, here are reported locations with navigation accuracy
+    //When trip is not running, this may report position with less accuracy and less often to preserve battery life.
+    func driving(_ driving: SygicDriving, location: CLLocation) {
+        print("location: \(location)")
     }
 
     // MARK: - Notifications
