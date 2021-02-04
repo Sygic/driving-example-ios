@@ -13,9 +13,9 @@
 		1BD60BCF235D99770088A886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60BCE235D99770088A886 /* Assets.xcassets */; };
 		1BD60BD2235D99770088A886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60BD0235D99770088A886 /* LaunchScreen.storyboard */; };
 		1BD60BE2235DA0AD0088A886 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD60BE1235DA0AD0088A886 /* AppConstants.swift */; };
-		1BD60BE3235EDD620088A886 /* Driving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD60BDF235DA0400088A886 /* Driving.framework */; };
-		1BD60BE4235EDD620088A886 /* Driving.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD60BDF235DA0400088A886 /* Driving.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1BD60BE7235EE35D0088A886 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60BE6235EE35D0088A886 /* readme.txt */; };
+		C627163725CC9E800013D84A /* Driving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C627163525CC9DF60013D84A /* Driving.framework */; };
+		C627163825CC9E800013D84A /* Driving.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C627163525CC9DF60013D84A /* Driving.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,7 +25,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1BD60BE4235EDD620088A886 /* Driving.framework in Embed Frameworks */,
+				C627163825CC9E800013D84A /* Driving.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,9 +41,9 @@
 		1BD60BD1235D99770088A886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1BD60BD3235D99770088A886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BD60BD9235D9CF60088A886 /* DrivingExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DrivingExample-Bridging-Header.h"; sourceTree = "<group>"; };
-		1BD60BDF235DA0400088A886 /* Driving.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Driving.framework; path = DrivingExample/Frameworks/Driving.framework; sourceTree = SOURCE_ROOT; };
 		1BD60BE1235DA0AD0088A886 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		1BD60BE6235EE35D0088A886 /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = readme.txt; path = DrivingExample/Frameworks/readme.txt; sourceTree = SOURCE_ROOT; };
+		C627163525CC9DF60013D84A /* Driving.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Driving.framework; path = DrivingExample/Frameworks/Driving.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BD60BE3235EDD620088A886 /* Driving.framework in Frameworks */,
+				C627163725CC9E800013D84A /* Driving.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 		1BD60BDE235DA0300088A886 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1BD60BDF235DA0400088A886 /* Driving.framework */,
+				C627163525CC9DF60013D84A /* Driving.framework */,
 				1BD60BE6235EE35D0088A886 /* readme.txt */,
 			);
 			path = Frameworks;

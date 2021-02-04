@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SygicDrivingDelegate, Syg
         print("UserId: \(userID)")
 
         #warning ("Here insert your client id you got from Sygic.")
-        SygicDriving.sharedInstance().initialize(withClientId: "xxx.xxxx.xxxxxxxxxxx", userId: userID, configuration: configuration, vehicleSettings: vehicleSettings, countryIso: nil) { (error) in
+        SygicDriving.sharedInstance().initialize(withClientId: "xxx.xxxx.xxxxxxxxxxx", userId: userID, configuration: configuration, vehicleSettings: vehicleSettings, countryIso: nil, noGyroMode: false) { (error) in
             if let error = error {
                 print("\(error.localizedDescription)")
                 NotificationCenter.default.post(name: .HEKDrivingInitializationFailed, object: nil, userInfo: nil)
