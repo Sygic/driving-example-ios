@@ -17,14 +17,17 @@
 
 ## Instructions for driving 2.x:
 
-1. [Download Driving lib](https://public.repo.sygic.com/#browse/browse:maven-sygic-releases:com%2Fsygic%2Fadas%2Fdriving) Driving.xcframework and copy it into Frameworks directory in the project. You have to use version 2.x, best option is the latest 2.x
-2. [Download Sygic Auth Lib](https://public.repo.sygic.com/#browse/browse:maven-sygic-releases:com%2Fsygic%2Flib%2Fauth%2Fsygicauth-ios) 
- 
-3. Update clientId and license in AppDelegate.swift in SygicDriving.initialize method. If you don't have your own clientId and license [contact us](https://www.sygic.com/enterprise/contact-us)
+1. [Download Driving.xcframework](https://public.repo.sygic.com/#browse/browse:maven-sygic-releases:com%2Fsygic%2Fadas%2Fdriving) Driving.xcframework and copy it into Frameworks directory in the project. You have to use version 2.x, best option is the latest 2.x
 
-4. build and run
+2. [Download SygicAuth.xcframework Lib](https://public.repo.sygic.com/#browse/browse:maven-sygic-releases:com%2Fsygic%2Flib%2Fauth%2Fsygicauth-ios) and copy it into Frameworks directory in the project. Use the latest library version (1.3 at the time of writing this text)
 
-5. Install on device, put device in a car/bus/truck and take a test drive.
+3. Add both libraries (auth and driving) to the project and set embed and sign for them
+
+4. Update clientId and license in AppDelegate.swift in SygicDriving.initialize method. If you don't have your own clientId and license [contact us](https://www.sygic.com/enterprise/contact-us)
+
+6. build and run
+
+6. Install on device, put device in a car/bus/truck and take a test drive.
 
 
 
@@ -42,6 +45,6 @@
 7. Event TripDidEnd and TripDiscarted are exclusive to each other. You only get one of those, not both. When trip is discarted don't expect that finalTripData is called, nor tripModelChanged. So it is important to handle both.
 
 # Notes
--it is recommended to use one Sygic Auth object for all instances of sygic libraries that require Sygic Auth. For example: Driving lib with combination of Sygic Maps. 
+- it is recommended to use one Sygic Auth object for all instances of sygic libraries that require Sygic Auth. For example: Driving lib with combination of Sygic Maps. 
 
--all API methods were removed from library. API access is delivered as separate package.
+- all API methods were removed from library. API access is delivered as separate package.
