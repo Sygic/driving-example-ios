@@ -9,9 +9,10 @@
 import UIKit
 import UserNotifications
 import os.log
+import Driving
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SygicDrivingDelegate, SygicPositioningDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SygicDrivingDelegate, SygicPositioningDelegate, UNUserNotificationCenterDelegate, SygicLoggingDelegate, SygicSensorDelegate {
 
     var window: UIWindow?
 
@@ -33,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SygicDrivingDelegate, Syg
         configuration.dontUploadTrips = false
         configuration.sendDataInRoaming = false
         configuration.sendDataOnMobile = true
+        //Use this when more than one sygic library is using auth object. (ex. Maps + Driving)
+        //configuration.externalAuthObject = authObject
 
         let vehicleSettings = SygicVehicleSettings()
         vehicleSettings.vehicleType = .car
@@ -62,19 +65,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SygicDrivingDelegate, Syg
 
         print("UserId: \(userID)")
 
-        #warning ("Here insert your client id you got from Sygic.")
-        SygicDriving.sharedInstance().initialize(withClientId: "xxx.xxxx.xxxxxxxxxxx", userId: userID, configuration: configuration, vehicleSettings: vehicleSettings, countryIso: nil, noGyroMode: false) { (error) in
-            if let error = error {
-                print("\(error.localizedDescription)")
-                NotificationCenter.default.post(name: .HEKDrivingInitializationFailed, object: nil, userInfo: nil)
-            } else {
-                SygicDriving.sharedInstance().delegate = self
-                SygicDriving.sharedInstance().enableTripDetection(true)
-                NotificationCenter.default.post(name: .HEKDrivingInitialized, object: nil, userInfo: nil)
-            }
+        #warning ("Here insert your client id and license you got from Sygic.")
+        //Client id and license is bound to particular bundle id of app. You can not use it in app with different bundle id.
+        let licenseKey = "license-key.from.sygic"
+        let clientId = "client.id.from.sygic"
+        
+        do {
+            try SygicDriving.sharedInstance().initialize(withClientId: clientId, userId: userID, licenseKey: licenseKey, configuration: configuration, vehicleSettings: vehicleSettings)
         }
-
-        #warning("did you copied Driving.framework into Frameworks directory?")
+        catch let error as NSError {
+            print("Error: \(error.description) \(String(describing: error.localizedRecoverySuggestion))");
+        }
+        
+        SygicDriving.sharedInstance().delegate = self
+        SygicDriving.sharedInstance().enableTripDetection(true)
+        
+        #warning("did you copied Driving.xcframework and SygicAuth.xcframework into Frameworks directory?")
+        //you need to add those libraries to the project, and set them to embed and sign.
 
         return true
     }
@@ -103,28 +110,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SygicDrivingDelegate, Syg
 
 
     //MARK: - Driving delegates
-    func driving(_ driving: SygicDriving, tripDidStart timestamp: Double) {
-        let date = Date(timeIntervalSince1970: timestamp)
-        fireNotification(withText: "### Trip started ###", date: date)
-        NotificationCenter.default.post(name: .HEKTripStarted, object: date)
-        print("trip started")
+    func driving(_ driving: SygicDriving, tripPossiblyStarted date: Date, location: CLLocation?) {
+        fireNotification(withText: "### Trip possibly started ###", date: date)
+        NotificationCenter.default.post(name: .HEKTripPossiblyStarted, object: date)
+        print("trip possibly started")
+    }
+        
+    func driving(_ driving: SygicDriving, tripStartCancelled date: Date) {
+        NotificationCenter.default.post(name: .HEKTripStartCancelled, object: date)
+        print("Got steps during trip start. Trip cancelled.")
     }
 
-    func driving(_ driving: SygicDriving, tripDidEnd timestamp: Double) {
-        let date = Date(timeIntervalSince1970: timestamp)
-        fireNotification(withText: "*** Trip ended ***", date: date)
-        NotificationCenter.default.post(name: .HEKTripEnded, object: date)
-        print("trip ended")
-    }
-
-    //if you want to have location in start and end trip events use this delegate
     //Note: at the time when trip starts we may not have location, for example in tunnel
-    func driving(_ driving: SygicDriving, tripDidStart timestamp: Double, location: CLLocation?) {
+    func driving(_ driving: SygicDriving, tripDidStart date: Date, location: CLLocation?) {
         print("trip start with location:\(String(describing: location))")
+        fireNotification(withText: "### Trip started ###", date: date)
+        NotificationCenter.default.post(name: .HEKTripStarted, object: nil)
     }
-
-    func driving(_ driving: SygicDriving, tripDidEnd timestamp: Double, location: CLLocation?) {
+    
+    func driving(_ driving: SygicDriving, tripDidEnd date: Date, location: CLLocation?) {
         print("trip end with location:\(String(describing: location))")
+        fireNotification(withText: "*** Trip ended ***", date: date)
+        NotificationCenter.default.post(name: .HEKTripEnded, object: nil)
+    }
+    
+    func driving(_ driving: SygicDriving, tripDiscartedWith reason: SygicTripDiscartedReason) {
+        switch reason {
+        case .durationTooShort:
+            //minimal trip duration can be set in configuration during initialization, default: 90sec
+            print("trip discarted: duration too short. ")
+        case .traveledDistanceTooShort:
+            //minimal distance can be set in configuration during initialization, default: 400meters
+            print("trip discarted: distance too short")
+        @unknown default:
+            print("not yet known")
+        }
+        
+        NotificationCenter.default.post(name: .HEKTripDiscarted, object: nil)
     }
 
     func driving(_ driving: SygicDriving, reporting event: SygicTripEvent) {

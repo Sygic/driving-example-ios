@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Driving
 
 class ViewController: UIViewController {
 
@@ -23,9 +24,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         clearText()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(afterDrivingInitialization), name: .HEKDrivingInitialized, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(tripStarted), name: .HEKTripStarted, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(tripEnded), name: .HEKTripEnded, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(tripStartCanceled), name: .HEKTripStartCancelled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(tripDiscarted), name: .HEKTripDiscarted, object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(detectorStateChangedNotification(notification:)), name: .HEKTripDetectorStateChanged, object: nil)
 
@@ -33,18 +35,21 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(eventUpdated(notification:)), name: .HEKTripEventUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(eventEnded(notification:)), name: .HEKTripEventEnded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(eventCanceled(notification:)), name: .HEKTripEventCanceled, object: nil)
+        
+        
+        afterDrivingInitialization()
     }
 
     @objc func afterDrivingInitialization() {
         //ask for permissions, use helper methos. However you are free to use your own if you need more control.
         SygicDriving.sharedInstance().requestLocationAlwaysPermission()
         SygicDriving.sharedInstance().requestMotionPermision()
+        //for development purposes it is good to have level set at .debug
+        //but never ship it. Set it to .error for production builds
+        SygicDriving.sharedInstance().setLogLevel(.debug)
         self.labelState.text = "Initialized"
     }
 
-    func isInitialized() -> Bool {
-        return SygicDriving.sharedInstance().isInitialized
-    }
 
     func writeText(text: String) {
         self.textView.insertText(text)
@@ -54,126 +59,16 @@ class ViewController: UIViewController {
         self.textView.text = ""
     }
 
-    @IBAction func onLast10Trips(_ sender: Any) {
-        guard isInitialized() else {
-            return
-        }
-
-        let endDate = Date()
-        let startDate = Date(timeIntervalSince1970: (Date().timeIntervalSince1970 - 30*24*3600))
-        SygicDriving.sharedInstance().serverApi.userTrips(withStart: startDate, end: endDate, page: 1, pageSize: 10) { (data : SygicUserTripsContainerModel?, error : Error?) in
-            guard let data = data, error == nil else {
-                self.writeText(text: "Error:\(String(describing: error))")
-                return
-            }
-
-            let formater = DateFormatter()
-            formater.dateStyle = .short
-            formater.timeStyle = .short
-
-            self.lastTripId = data.trips.first?.externalId
-
-            if data.trips.count == 0 {
-                self.writeText(text: "There are no trips. Go take a drive.\n")
-                return
-            }
-
-            self.writeText(text: "Trips:\n")
-            for trip in data.trips {
-                let startStr = formater.string(from: trip.startDate)
-                let endStr = formater.string(from: trip.endDate)
-                let kmDriven = String(format: "%.2f", trip.totalDistanceInKm)
-                let score = String(format: "%.0f", trip.totalScore)
-                let finalText = "\(startStr) - \(endStr) \(kmDriven)km Score: \(score)\n"
-                self.writeText(text: finalText)
-            }
-            self.writeText(text: "\n")
-        }
-
-    }
-
-    @IBAction func onLastTripDetail(_ sender: Any) {
-        guard isInitialized() else {
-            self.writeText(text: "Not initialized, exiting.")
-            return
-        }
-
-        guard let lastTripId = lastTripId else {
-            self.writeText(text: "No tripId, exiting.")
-            return
-        }
-
-        SygicDriving.sharedInstance().serverApi.tripDetail(withTripId: lastTripId) { (trip : SygicUserTripDetailModel?, error : Error?) in
-            guard let trip = trip, error == nil else {
-                self.writeText(text: "Error:\(String(describing: error))")
-                return
-            }
-
-            let formater = DateFormatter()
-            formater.dateStyle = .short
-            formater.timeStyle = .short
-
-            let startStr = formater.string(from: trip.startDate)
-            let endStr = formater.string(from: trip.endDate)
-            let kmDriven = String(format: "%.2f", trip.totalDistanceInKm)
-            let score = String(format: "%.0f", trip.totalScore)
-            let finalText = "\(startStr) - \(endStr) \(kmDriven)km Score: \(score)\n"
-            self.writeText(text: finalText)
-        }
-    }
-
-    @IBAction func onUserStatistics(_ sender: Any) {
-        guard isInitialized() else {
-            self.writeText(text: "Not initialized, exiting.")
-            return
-        }
-
-        SygicDriving.sharedInstance().serverApi.liveStatsCompletionBlock { (stats : [SygicStats]?, error: Error?) in
-            guard let stats = stats, error == nil else {
-                self.writeText(text: "Error:\(String(describing: error))")
-                return
-            }
-
-            for s in stats {
-                if s.period.periodType == .total {
-                    self.writeText(text: "1.Lifetime\n")
-                }
-                else if s.period.periodType == .last7Days {
-                    self.writeText(text: "2.Last 7 days\n")
-                }
-                else {
-                    continue
-                }
-
-                // s.tripsCount
-                let totalScoreMeStr = String(format: "%.0f", s.totalScore.scoreOfMe)
-                let totalScoreOthersStr = String(format: "%.0f", s.totalScore.scoreOfOthersOverall)
-                let finalStr = "Number of trips:\(s.tripsCount)\nMy score:\(totalScoreMeStr)\nOthers:\(totalScoreOthersStr)\n"
-                self.writeText(text: finalStr)
-            }
-            self.writeText(text: "\n")
-        }
-    }
-
+    
     @IBAction func onClearLog(_ sender: Any) {
         clearText()
     }
 
     @IBAction func onStartTrip(_ sender: Any) {
-        guard isInitialized() else {
-            self.writeText(text: "Not initialized, exiting.")
-            return
-        }
-
         SygicDriving.sharedInstance().startTrip()
     }
 
     @IBAction func onEndTrip(_ sender: Any) {
-        guard isInitialized() else {
-            self.writeText(text: "Not initialized, exiting.")
-            return
-        }
-
         SygicDriving.sharedInstance().endTrip()
     }
 
@@ -182,14 +77,24 @@ class ViewController: UIViewController {
         self.writeText(text: "Trip started.\n")
         self.labelState.text = "Trip started"
     }
+    
+    @objc func tripStartCanceled() {
+        self.writeText(text: "Trip start cancelled.\n")
+        self.labelState.text = "Trip start cancelled"
+    }
 
     @objc func tripEnded() {
         self.writeText(text: "Trip ended.\n")
         self.labelState.text = "Trip ended"
     }
+    
+    @objc func tripDiscarted() {
+        self.writeText(text: "Trip discarted.\n")
+        self.labelState.text = "Trip discarted"
+    }
 
     @objc func detectorStateChangedNotification(notification: Notification) {
-
+        
     }
 
     @objc func eventStarted(notification: Notification) {

@@ -9,12 +9,13 @@
 import Foundation
 
 extension Notification.Name {
-    static let HEKDrivingInitialized = Notification.Name("HEKDrivingInitialized")
-    static let HEKDrivingInitializationFailed = Notification.Name("HEKDrivingInitializationFailed")
     static let HEKPermissionsUpdated = Notification.Name("HEKPermissionsUpdated")
     static let HEKTripModelHasChanged = Notification.Name("HEKTripModelHasChanged")
     static let HEKTripStarted = Notification.Name("HEKTripStarted")
+    static let HEKTripPossiblyStarted = Notification.Name("HEKTripPossiblyStarted")
+    static let HEKTripStartCancelled = Notification.Name("HEKTripStartCancelled")
     static let HEKTripEnded = Notification.Name("HEKTripEnded")
+    static let HEKTripDiscarted = Notification.Name("HEKTripDiscarted")
     static let HEKTripReportingEvent = Notification.Name("HEKTripReportingEvent")
     static let HEKTripEventStarted = Notification.Name("HEKTripEventStarted")
     static let HEKTripEventUpdated = Notification.Name("HEKTripEventUpdate")
