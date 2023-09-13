@@ -45,6 +45,39 @@
 7. Event TripDidEnd and TripDiscarted are exclusive to each other. You only get one of those, not both. When trip is discarted don't expect that finalTripData is called, nor tripModelChanged. So it is important to handle both.
 
 # Notes
-- it is recommended to use one Sygic Auth object for all instances of sygic libraries that require Sygic Auth. For example: Driving lib with combination of Sygic Maps. 
+- it is recommended to use one Sygic Auth object for all instances of sygic libraries that require Sygic Auth. For example: Driving lib with combination of Sygic Maps. During configuration you need to pass Auth object. 
 
-- all API methods were removed from library. API access is delivered as separate package.
+- all API methods available in Driving 1.x were removed from library version 2.x. API access is delivered as separate package.
+
+# Simulation of trips without driving
+
+Library provides means to replay already driven trips again. Primary reason for this is testing.
+
+What to do to enable replays:
+
+1. developer mode must be enabled
+2. go to the car and make some trips. With developer mode enabled all raw trip data are saved localy on the phone.
+3. Now you phone has the data that are required for replays. It is possible to copy app data from the phone and put them in the simulator. 
+4. To start replay use 
+'''swift
+SygicDriving.sharedInstance().replayTrip(at: index)
+''' 
+where index is index of the trip in the local trip list. To get list of all trips use these methods:
+'''swift
+let tripCount = SygicDriving.sharedInstance().tripCount()
+'''
+'''swift
+let tripData = SygicDriving.sharedInstance().tripMeta(at: indexPath.row)
+'''
+You can remove trip using:
+'''swift
+SygicDriving.sharedInstance().removeTrip(at: indexPath.row)
+'''
+To show complete trip data from local trip data use:
+'''swift
+let tripData = SygicDriving.sharedInstance().trip(at: tripIndex)
+'''            
+5. To stop replay use
+'''swift
+SygicDriving.sharedInstance().stopReplay()
+'''
