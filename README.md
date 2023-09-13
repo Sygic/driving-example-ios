@@ -58,25 +58,33 @@ What to do to enable replays:
 1. developer mode must be enabled
 2. go to the car and make some trips. With developer mode enabled all raw trip data are saved localy on the phone.
 3. Now you phone has the data that are required for replays. It is possible to copy app data from the phone and put them in the simulator. 
-4. To start replay use 
-'''swift
+4. To start replay use
+ 
+'''
 SygicDriving.sharedInstance().replayTrip(at: index)
-''' 
+'''
+ 
 where index is index of the trip in the local trip list. To get list of all trips use these methods:
-'''swift
+
+'''
 let tripCount = SygicDriving.sharedInstance().tripCount()
 '''
-'''swift
+
+Reduced data about the trip:
+'''
 let tripData = SygicDriving.sharedInstance().tripMeta(at: indexPath.row)
 '''
 You can remove trip using:
-'''swift
+
+'''
 SygicDriving.sharedInstance().removeTrip(at: indexPath.row)
 '''
+
 To show complete trip data from local trip data use:
 '''swift
 let tripData = SygicDriving.sharedInstance().trip(at: tripIndex)
-'''            
+'''
+            
 5. To stop replay use
 '''swift
 SygicDriving.sharedInstance().stopReplay()
