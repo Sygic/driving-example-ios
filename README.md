@@ -60,32 +60,32 @@ What to do to enable replays:
 3. Now you phone has the data that are required for replays. It is possible to copy app data from the phone and put them in the simulator. 
 4. To start replay use
  
-'''
+```swift
 SygicDriving.sharedInstance().replayTrip(at: index)
-'''
+```
  
 where index is index of the trip in the local trip list. To get list of all trips use these methods:
 
-'''
+```swift
 let tripCount = SygicDriving.sharedInstance().tripCount()
-'''
+```
 
 Reduced data about the trip:
-'''
+```swift
 let tripData = SygicDriving.sharedInstance().tripMeta(at: indexPath.row)
-'''
+```
 You can remove trip using:
 
-'''
+```swift
 SygicDriving.sharedInstance().removeTrip(at: indexPath.row)
-'''
+```
 
 To show complete trip data from local trip data use:
-'''swift
+```swift
 let tripData = SygicDriving.sharedInstance().trip(at: tripIndex)
-'''
+```
             
 5. To stop replay use
-'''swift
+```swift
 SygicDriving.sharedInstance().stopReplay()
-'''
+```
