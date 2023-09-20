@@ -3,32 +3,48 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1BD60BC8235D99740088A886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD60BC7235D99740088A886 /* AppDelegate.swift */; };
-		1BD60BCA235D99740088A886 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD60BC9235D99740088A886 /* ViewController.swift */; };
+		1BD60BCA235D99740088A886 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD60BC9235D99740088A886 /* MainViewController.swift */; };
 		1BD60BCD235D99740088A886 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60BCB235D99740088A886 /* Main.storyboard */; };
 		1BD60BCF235D99770088A886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60BCE235D99770088A886 /* Assets.xcassets */; };
 		1BD60BD2235D99770088A886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60BD0235D99770088A886 /* LaunchScreen.storyboard */; };
 		1BD60BE2235DA0AD0088A886 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD60BE1235DA0AD0088A886 /* AppConstants.swift */; };
 		1BD60BE7235EE35D0088A886 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60BE6235EE35D0088A886 /* readme.txt */; };
-		C608CC1C283B6E99002AE7F3 /* Driving.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C608CC1A283B6E91002AE7F3 /* Driving.xcframework */; };
-		C608CC1D283B6E99002AE7F3 /* Driving.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C608CC1A283B6E91002AE7F3 /* Driving.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C608CC21283BA559002AE7F3 /* SygicAuth.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C608CC1F283B9F9C002AE7F3 /* SygicAuth.xcframework */; };
-		C608CC22283BA559002AE7F3 /* SygicAuth.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C608CC1F283B9F9C002AE7F3 /* SygicAuth.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C695339F2AB9A5A800EBF724 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695339D2AB9A5A800EBF724 /* SettingsTableViewController.swift */; };
+		C69533A02AB9A5A800EBF724 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695339E2AB9A5A800EBF724 /* AppSettings.swift */; };
+		C69533A12AB9A85400EBF724 /* Driving.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C608CC1A283B6E91002AE7F3 /* Driving.xcframework */; };
+		C69533A22AB9A85400EBF724 /* Driving.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C608CC1A283B6E91002AE7F3 /* Driving.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C69533A32AB9A85400EBF724 /* SygicAuth.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C608CC1F283B9F9C002AE7F3 /* SygicAuth.xcframework */; };
+		C69533A42AB9A85400EBF724 /* SygicAuth.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C608CC1F283B9F9C002AE7F3 /* SygicAuth.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C6BD23132ABAEBE20097801A /* TripListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD230D2ABAEBE20097801A /* TripListCell.swift */; };
+		C6BD23142ABAEBE20097801A /* TripListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD230E2ABAEBE20097801A /* TripListTableViewController.swift */; };
+		C6BD23152ABAEBE20097801A /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD230F2ABAEBE20097801A /* TripDetailViewController.swift */; };
+		C6BD231F2ABAECE10097801A /* UIDevice+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD231A2ABAECE10097801A /* UIDevice+extensions.swift */; };
+		C6BD23202ABAECE10097801A /* DateFormatter+myFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD231B2ABAECE10097801A /* DateFormatter+myFormats.swift */; };
+		C6BD23212ABAECE10097801A /* UIStoryboard+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD231C2ABAECE10097801A /* UIStoryboard+extensions.swift */; };
+		C6BD23222ABAECE10097801A /* UIViewController+containerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD231D2ABAECE10097801A /* UIViewController+containerTransition.swift */; };
+		C6BD23232ABAECE10097801A /* CGpoint+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD231E2ABAECE10097801A /* CGpoint+extension.swift */; };
+		C6BD232A2ABAECEE0097801A /* GradientPolylineRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD23242ABAECEE0097801A /* GradientPolylineRenderer.swift */; };
+		C6BD232B2ABAECEE0097801A /* ColorPointPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD23252ABAECEE0097801A /* ColorPointPathRenderer.swift */; };
+		C6BD232C2ABAECEE0097801A /* AccelerometerPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD23262ABAECEE0097801A /* AccelerometerPolyline.swift */; };
+		C6BD232D2ABAECEE0097801A /* GradientPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD23272ABAECEE0097801A /* GradientPolyline.swift */; };
+		C6BD232E2ABAECEE0097801A /* GooglePolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD23282ABAECEE0097801A /* GooglePolyline.swift */; };
+		C6BD232F2ABAECEE0097801A /* AccelerometerPolylineRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD23292ABAECEE0097801A /* AccelerometerPolylineRenderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1BD60BE5235EDD630088A886 /* Embed Frameworks */ = {
+		C69533A52AB9A85400EBF724 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C608CC1D283B6E99002AE7F3 /* Driving.xcframework in Embed Frameworks */,
-				C608CC22283BA559002AE7F3 /* SygicAuth.xcframework in Embed Frameworks */,
+				C69533A22AB9A85400EBF724 /* Driving.xcframework in Embed Frameworks */,
+				C69533A42AB9A85400EBF724 /* SygicAuth.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -38,7 +54,7 @@
 /* Begin PBXFileReference section */
 		1BD60BC4235D99740088A886 /* DrivingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD60BC7235D99740088A886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1BD60BC9235D99740088A886 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1BD60BC9235D99740088A886 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1BD60BCC235D99740088A886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1BD60BCE235D99770088A886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1BD60BD1235D99770088A886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,6 +64,22 @@
 		1BD60BE6235EE35D0088A886 /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = readme.txt; path = DrivingExample/Frameworks/readme.txt; sourceTree = SOURCE_ROOT; };
 		C608CC1A283B6E91002AE7F3 /* Driving.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Driving.xcframework; path = DrivingExample/Frameworks/Driving.xcframework; sourceTree = SOURCE_ROOT; };
 		C608CC1F283B9F9C002AE7F3 /* SygicAuth.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SygicAuth.xcframework; path = DrivingExample/Frameworks/SygicAuth.xcframework; sourceTree = SOURCE_ROOT; };
+		C695339D2AB9A5A800EBF724 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		C695339E2AB9A5A800EBF724 /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		C6BD230D2ABAEBE20097801A /* TripListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripListCell.swift; sourceTree = "<group>"; };
+		C6BD230E2ABAEBE20097801A /* TripListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripListTableViewController.swift; sourceTree = "<group>"; };
+		C6BD230F2ABAEBE20097801A /* TripDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailViewController.swift; sourceTree = "<group>"; };
+		C6BD231A2ABAECE10097801A /* UIDevice+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+extensions.swift"; sourceTree = "<group>"; };
+		C6BD231B2ABAECE10097801A /* DateFormatter+myFormats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+myFormats.swift"; sourceTree = "<group>"; };
+		C6BD231C2ABAECE10097801A /* UIStoryboard+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+extensions.swift"; sourceTree = "<group>"; };
+		C6BD231D2ABAECE10097801A /* UIViewController+containerTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+containerTransition.swift"; sourceTree = "<group>"; };
+		C6BD231E2ABAECE10097801A /* CGpoint+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGpoint+extension.swift"; sourceTree = "<group>"; };
+		C6BD23242ABAECEE0097801A /* GradientPolylineRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientPolylineRenderer.swift; sourceTree = "<group>"; };
+		C6BD23252ABAECEE0097801A /* ColorPointPathRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPointPathRenderer.swift; sourceTree = "<group>"; };
+		C6BD23262ABAECEE0097801A /* AccelerometerPolyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerPolyline.swift; sourceTree = "<group>"; };
+		C6BD23272ABAECEE0097801A /* GradientPolyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientPolyline.swift; sourceTree = "<group>"; };
+		C6BD23282ABAECEE0097801A /* GooglePolyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePolyline.swift; sourceTree = "<group>"; };
+		C6BD23292ABAECEE0097801A /* AccelerometerPolylineRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerPolylineRenderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C608CC1C283B6E99002AE7F3 /* Driving.xcframework in Frameworks */,
-				C608CC21283BA559002AE7F3 /* SygicAuth.xcframework in Frameworks */,
+				C69533A12AB9A85400EBF724 /* Driving.xcframework in Frameworks */,
+				C69533A32AB9A85400EBF724 /* SygicAuth.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,12 +117,16 @@
 			children = (
 				1BD60BC7235D99740088A886 /* AppDelegate.swift */,
 				1BD60BE1235DA0AD0088A886 /* AppConstants.swift */,
-				1BD60BC9235D99740088A886 /* ViewController.swift */,
+				1BD60BC9235D99740088A886 /* MainViewController.swift */,
 				1BD60BCB235D99740088A886 /* Main.storyboard */,
 				1BD60BCE235D99770088A886 /* Assets.xcassets */,
 				1BD60BD0235D99770088A886 /* LaunchScreen.storyboard */,
 				1BD60BD3235D99770088A886 /* Info.plist */,
 				1BD60BD9235D9CF60088A886 /* DrivingExample-Bridging-Header.h */,
+				C6BD23192ABAECA20097801A /* PolylineRenderers */,
+				C6BD23182ABAEC760097801A /* Extensions */,
+				C6BD230B2ABAE9790097801A /* TripList */,
+				C695339C2AB9A59000EBF724 /* Settings */,
 			);
 			path = DrivingExample;
 			sourceTree = "<group>";
@@ -105,6 +141,50 @@
 			path = Frameworks;
 			sourceTree = SOURCE_ROOT;
 		};
+		C695339C2AB9A59000EBF724 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C695339E2AB9A5A800EBF724 /* AppSettings.swift */,
+				C695339D2AB9A5A800EBF724 /* SettingsTableViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		C6BD230B2ABAE9790097801A /* TripList */ = {
+			isa = PBXGroup;
+			children = (
+				C6BD230F2ABAEBE20097801A /* TripDetailViewController.swift */,
+				C6BD230D2ABAEBE20097801A /* TripListCell.swift */,
+				C6BD230E2ABAEBE20097801A /* TripListTableViewController.swift */,
+			);
+			path = TripList;
+			sourceTree = "<group>";
+		};
+		C6BD23182ABAEC760097801A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C6BD231E2ABAECE10097801A /* CGpoint+extension.swift */,
+				C6BD231B2ABAECE10097801A /* DateFormatter+myFormats.swift */,
+				C6BD231A2ABAECE10097801A /* UIDevice+extensions.swift */,
+				C6BD231C2ABAECE10097801A /* UIStoryboard+extensions.swift */,
+				C6BD231D2ABAECE10097801A /* UIViewController+containerTransition.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C6BD23192ABAECA20097801A /* PolylineRenderers */ = {
+			isa = PBXGroup;
+			children = (
+				C6BD23262ABAECEE0097801A /* AccelerometerPolyline.swift */,
+				C6BD23292ABAECEE0097801A /* AccelerometerPolylineRenderer.swift */,
+				C6BD23252ABAECEE0097801A /* ColorPointPathRenderer.swift */,
+				C6BD23282ABAECEE0097801A /* GooglePolyline.swift */,
+				C6BD23272ABAECEE0097801A /* GradientPolyline.swift */,
+				C6BD23242ABAECEE0097801A /* GradientPolylineRenderer.swift */,
+			);
+			path = PolylineRenderers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -115,7 +195,7 @@
 				1BD60BC0235D99740088A886 /* Sources */,
 				1BD60BC1235D99740088A886 /* Frameworks */,
 				1BD60BC2235D99740088A886 /* Resources */,
-				1BD60BE5235EDD630088A886 /* Embed Frameworks */,
+				C69533A52AB9A85400EBF724 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,8 +212,9 @@
 		1BD60BBC235D99740088A886 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1030;
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "Sygic a.s.";
 				TargetAttributes = {
 					1BD60BC3235D99740088A886 = {
@@ -184,9 +265,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BD60BCA235D99740088A886 /* ViewController.swift in Sources */,
+				C6BD23132ABAEBE20097801A /* TripListCell.swift in Sources */,
+				C6BD231F2ABAECE10097801A /* UIDevice+extensions.swift in Sources */,
+				C695339F2AB9A5A800EBF724 /* SettingsTableViewController.swift in Sources */,
+				C6BD232A2ABAECEE0097801A /* GradientPolylineRenderer.swift in Sources */,
+				C6BD232C2ABAECEE0097801A /* AccelerometerPolyline.swift in Sources */,
+				C6BD23212ABAECE10097801A /* UIStoryboard+extensions.swift in Sources */,
+				C6BD23222ABAECE10097801A /* UIViewController+containerTransition.swift in Sources */,
+				C6BD232F2ABAECEE0097801A /* AccelerometerPolylineRenderer.swift in Sources */,
+				C6BD23142ABAEBE20097801A /* TripListTableViewController.swift in Sources */,
+				1BD60BCA235D99740088A886 /* MainViewController.swift in Sources */,
+				C6BD232B2ABAECEE0097801A /* ColorPointPathRenderer.swift in Sources */,
 				1BD60BE2235DA0AD0088A886 /* AppConstants.swift in Sources */,
+				C6BD23152ABAEBE20097801A /* TripDetailViewController.swift in Sources */,
+				C6BD232E2ABAECEE0097801A /* GooglePolyline.swift in Sources */,
+				C6BD232D2ABAECEE0097801A /* GradientPolyline.swift in Sources */,
+				C69533A02AB9A5A800EBF724 /* AppSettings.swift in Sources */,
 				1BD60BC8235D99740088A886 /* AppDelegate.swift in Sources */,
+				C6BD23232ABAECE10097801A /* CGpoint+extension.swift in Sources */,
+				C6BD23202ABAECE10097801A /* DateFormatter+myFormats.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +335,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -249,6 +347,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -263,7 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -299,6 +398,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -310,6 +410,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -318,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -334,19 +435,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LHXY425M9Z;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/DrivingExample/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = DrivingExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sygic.DrivingExample;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.antas.driverPerformance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "DrivingExample/DrivingExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -360,19 +462,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LHXY425M9Z;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/DrivingExample/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = DrivingExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sygic.DrivingExample;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.antas.driverPerformance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "DrivingExample/DrivingExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

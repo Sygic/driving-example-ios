@@ -9,7 +9,7 @@
 import UIKit
 import Driving
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var labelState: UILabel!

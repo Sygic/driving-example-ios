@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SygicDrivingDelegate, Syg
         }
         
         SygicDriving.sharedInstance().delegate = self
-        SygicDriving.sharedInstance().enableTripDetection(true)
+        AppSettings.shared.initializeSygicDrivingValues()
         
         #warning("did you copied Driving.xcframework and SygicAuth.xcframework into Frameworks directory?")
         //you need to add those libraries to the project, and set them to embed and sign.
